@@ -2,13 +2,13 @@
   "name": "masters-information-portal",
   "version": "0.1.0",
   "description": "DJSCE Master's Information Portal",
-  "main": "index.js",
+  "main": "server.js",
   "author": "DJ Unicode",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -18,7 +18,13 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mongoose": "^5.8.6",
     "morgan": "^1.9.1"

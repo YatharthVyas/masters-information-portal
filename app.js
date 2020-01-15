@@ -1,26 +1,42 @@
-const express = require('express');
+const app = require('express')();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
 const morgan = require('morgan');
-const path = require('path');
+const { userRouter } = require('./routes/index');
+const { directives, limiter, options } = require('./config/middlewares');
 
-const { userRouter } = require('./controllers');
+app.set('json spaces', 2);
 
-class App {
-  constructor
-}
+// body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// --- App config
+// morgan
+app.use(morgan('dev'));
 
-const app = express();
+// express-rate-limit
+app.use(limiter);
 
-// --- Middleware
+// helmet
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({ directives }));
+app.use(helmet.noCache());
 
-app.use(morgan('common'));
-app.use(express.static('./static/'));
+// cors
+app.use(cors(options));
 
-// --- Routes
-
+// Routes
 app.use('/api/user', userRouter);
 
-// ---
+// 404 Resource not found
+app.use("*", (req, res) => {
+  return res.status(404).send({
+      error: {
+        status: res.statusCode,
+        message: "Requested resource not found.",
+      }
+  });
+});
 
 module.exports = app;
