@@ -5,7 +5,7 @@ module.exports = {
 	limiter: rateLimit({
 		windowMs: rateLimitWindowInterval,
 		max: rateLimitAttempts,
-		message: JSON.stringify("Rate limit exceeded", null, 4),
+		message: JSON.stringify('Rate limit exceeded', null, 4),
 	}),
 
 	directives: {
@@ -14,7 +14,7 @@ module.exports = {
 	},
 
 	options: {
-    origin: "*",
+    origin: '*',
     methods: ['GET', 'POST', 'HEAD', 'PATCH', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
