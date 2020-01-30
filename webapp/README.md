@@ -1,3 +1,13 @@
+<h4> Work Progress </h4><br/>
+<b>Yatharth Vyas</b>
+<ul>
+	<li>Navbar: Done</li>
+	<li>Sign-Up: Done</li>
+	<li>Router: Needs updating when we integrate more components</li>
+</ul>
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
